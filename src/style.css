@@ -1,6 +1,14 @@
 /* =========================================
    CSS Reset & Variables
    ========================================= */
+@font-face {
+  font-family: 'Neiko';
+  src: url('/fonts/behance-67aa30710eea1.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Colors */
   --bg-color: #0d0f12;
@@ -12,7 +20,7 @@
   --accent-hover: #f1c944;
   
   /* Typography */
-  --font-heading: 'Playfair Display', serif;
+  --font-heading: 'Neiko', 'Playfair Display', serif;
   --font-body: 'Outfit', sans-serif;
   
   /* Spacing */
