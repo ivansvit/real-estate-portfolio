@@ -92,6 +92,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Gallery Expand Toggle ---
+  const categoryTitles = document.querySelectorAll('.category-title');
+  categoryTitles.forEach(title => {
+    title.addEventListener('click', () => {
+      // Toggle class on the title itself (for icon rotation)
+      title.classList.toggle('expanded');
+      
+      // Find the sibling gallery
+      const gallery = title.nextElementSibling;
+      if (gallery && gallery.classList.contains('scroll-gallery')) {
+        gallery.classList.toggle('expanded');
+      }
+    });
+  });
+
   // --- Form Submission Handling ---
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {

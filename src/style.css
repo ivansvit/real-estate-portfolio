@@ -681,6 +681,64 @@ footer {
   text-align: left;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: color var(--transition-fast);
+}
+.category-title:hover {
+  color: var(--accent-hover);
+}
+.category-title .toggle-icon {
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 300;
+  transition: transform var(--transition-fast);
+}
+.category-title.expanded .toggle-icon {
+  transform: rotate(45deg);
+}
+
+.scroll-gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--bg-surface-light);
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-gallery::-webkit-scrollbar {
+  height: 8px;
+}
+.scroll-gallery::-webkit-scrollbar-track {
+  background: var(--bg-surface-light);
+  border-radius: 4px;
+}
+.scroll-gallery::-webkit-scrollbar-thumb {
+  background-color: var(--accent);
+  border-radius: 4px;
+}
+.scroll-gallery .grid-item {
+  flex: 0 0 350px;
+  max-width: 350px;
+  scroll-snap-align: start;
+}
+@media screen and (max-width: 768px) {
+  .scroll-gallery .grid-item {
+    flex: 0 0 85vw;
+    max-width: 85vw;
+  }
+}
+.scroll-gallery.expanded {
+  display: grid;
+  overflow-x: visible;
+}
+.scroll-gallery.expanded .grid-item {
+  flex: none;
+  max-width: none;
 }
 
 /* Formspree Messages */
