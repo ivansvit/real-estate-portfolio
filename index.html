@@ -150,32 +150,38 @@
           <h2>Ready to elevate your listings?</h2>
           <p>Get in touch to schedule a shoot or request a custom quote. First impressions matter in real estate.</p>
           <div class="contact-details">
-            <p><span>Email:</span> hello@ivansvit.com</p>
-            <p><span>Phone:</span> (555) 123-4567</p>
-            <p><span>Location:</span> Los Angeles, CA</p>
+            <p><span>Email:</span> i.svit.can@gmail.com</p>
+            <p><span>Phone:</span> (403) 389-7767</p>
+            <p><span>Location:</span> Calgary, AB, Canada</p>
           </div>
         </div>
         <div class="contact-form-container">
           <form class="contact-form" id="contactForm">
             <div class="input-group">
-              <input type="text" placeholder="Your Name" required>
+              <input type="text" name="name" placeholder="Your Name" required data-fs-field>
+              <span class="fs-error-msg" data-fs-error="name"></span>
             </div>
             <div class="input-group">
-              <input type="email" placeholder="Your Email" required>
+              <input type="email" name="email" placeholder="Your Email" required data-fs-field>
+              <span class="fs-error-msg" data-fs-error="email"></span>
             </div>
             <div class="input-group">
-              <select required>
+              <select name="service" required data-fs-field>
                 <option value="" disabled selected>Service Interested In</option>
                 <option value="photo">Standard Photography</option>
                 <option value="twilight">Twilight Photography</option>
                 <option value="drone">Aerial/Drone</option>
                 <option value="package">Full Package</option>
               </select>
+              <span class="fs-error-msg" data-fs-error="service"></span>
             </div>
             <div class="input-group">
-              <textarea placeholder="Tell us about the property (Location, Sq Ft, etc.)" rows="4" required></textarea>
+              <textarea name="message" placeholder="Tell us about the property (Location, Sq Ft, etc.)" rows="4" required data-fs-field></textarea>
+              <span class="fs-error-msg" data-fs-error="message"></span>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Send Request</button>
+            <div class="fs-success-msg" data-fs-success>Message sent successfully! We'll be in touch soon.</div>
+            <div class="fs-error-msg form-error" data-fs-error></div>
+            <button type="submit" class="btn btn-primary btn-block" data-fs-submit-btn>Send Request</button>
           </form>
         </div>
       </div>

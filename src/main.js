@@ -1,4 +1,8 @@
+import { initForm } from '@formspree/ajax';
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Formspree
+  initForm({ formElement: '#contactForm', formId: 'xkodgyyk' });
   // --- Mobile Menu Toggle ---
   const mobileMenu = document.getElementById('mobile-menu');
   const navLinks = document.querySelector('.nav-links');
@@ -92,37 +96,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Form Submission Handling ---
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Animate button
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      
-      submitBtn.textContent = 'Sending...';
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.7';
-      
-      // Simulate API call
-      setTimeout(() => {
-        submitBtn.textContent = 'Message Sent!';
-        submitBtn.style.backgroundColor = '#28a745';
-        submitBtn.style.borderColor = '#28a745';
-        submitBtn.style.color = '#fff';
-        
-        contactForm.reset();
-        
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '1';
-          submitBtn.style.backgroundColor = '';
-          submitBtn.style.borderColor = '';
-        }, 3000);
-      }, 1500);
-    });
-  }
 });
