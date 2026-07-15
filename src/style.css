@@ -709,6 +709,9 @@ footer {
   scrollbar-width: thin;
   scrollbar-color: var(--accent) var(--bg-surface-light);
   -webkit-overflow-scrolling: touch;
+  /* Fades out the right edge to show there is more content */
+  -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, black 85%, transparent 100%);
 }
 .scroll-gallery::-webkit-scrollbar {
   height: 8px;
@@ -735,6 +738,9 @@ footer {
 .scroll-gallery.expanded {
   display: grid;
   overflow-x: visible;
+  /* Remove fade when expanded */
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 .scroll-gallery.expanded .grid-item {
   flex: none;
