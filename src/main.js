@@ -1,8 +1,4 @@
-import { initForm } from '@formspree/ajax';
-
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Formspree
-  initForm({ formElement: '#contactForm', formId: 'xkodgyyk' });
   // --- Mobile Menu Toggle ---
   const mobileMenu = document.getElementById('mobile-menu');
   const navLinks = document.querySelector('.nav-links');
@@ -96,4 +92,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Form Submission Handling ---
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+
+      // Hide messages
+      const successMsg = document.querySelector('[data-fs-success]');
+      const errorMsg = document.querySelector('.form-error');
+      if (successMsg) successMsg.style.display = 'none';
+      if (errorMsg) errorMsg.style.display = 'none';
+      
+      try {
+        const response = await fetch('https://formspree.io/f/xkodgyyk', {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          if (successMsg) successMsg.style.display = 'block';
+          contactForm.reset();
+        } else {
+          const data = await response.json();
+          if (data && data.errors && errorMsg) {
+            errorMsg.textContent = data.errors.map(error => error.message).join(', ');
+            errorMsg.style.display = 'block';
+          } else if (errorMsg) {
+            errorMsg.textContent = 'Oops! There was a problem submitting your form';
+            errorMsg.style.display = 'block';
+          }
+        }
+      } catch (error) {
+        if (errorMsg) {
+          errorMsg.textContent = 'Oops! There was a problem submitting your form';
+          errorMsg.style.display = 'block';
+        }
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+      }
+    });
+  }
 });
