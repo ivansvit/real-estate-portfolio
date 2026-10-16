@@ -470,8 +470,9 @@ footer {
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   margin-bottom: 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 2rem;
@@ -485,20 +486,6 @@ footer {
 }
 
 .footer-logo span {
-  color: var(--accent);
-}
-
-.social-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  margin-left: 1.5rem;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: var(--transition-fast);
-}
-
-.social-links a:hover {
   color: var(--accent);
 }
 
@@ -665,8 +652,7 @@ footer {
     aspect-ratio: 4/3;
   }
   
-  .footer-content { flex-direction: column; gap: 1.5rem; }
-  .social-links a { margin: 0 0.75rem; }
+  .footer-content { text-align: center; }
 }
 
 /* Portfolio Categories */
